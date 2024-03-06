@@ -3,14 +3,21 @@
 // 3.- Usar app.listen para abrir puertos
 import {connect} from './config.js';
 import express from  'express';
+import carRoutes from './routes/carRouters.js';
+
 connect();
 const api = express();
+
+api.use(express.json());
+
 api.listen(8000 , () =>{
     console.log('API corriendo en Puerto 8000');
 });
 
 // String Nombre de la Ruta 
 api.get('/test', (req , res) =>{
-    req.send ('Hola esto es una Prueba');
-    console.log('prueba exsitosa');
-})
+    res.send ('Hola esto es una Prueba');
+    
+});
+
+api.use(carRoutes);

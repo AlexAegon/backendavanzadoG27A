@@ -6,7 +6,10 @@ import mongoose from "mongoose";
 
 const carSchema = new mongoose.Schema({
     // campo -> Tipo de Dato
-    plate : String,
+    plate : {
+        type:String,
+        require:true
+    },
     model: String,
     brand : String,
     version: String,
@@ -15,6 +18,6 @@ const carSchema = new mongoose.Schema({
     vin: String,
 });
 
-//Nota: La primera letra en Mayuscula y en singular para el nombre 
+//Nota importante: La primera letra en Mayuscula y en singular para el nombre del modelo 
 
 export default mongoose.model('Car' , carSchema);
