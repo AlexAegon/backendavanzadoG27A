@@ -16,6 +16,10 @@ const carSchema = new mongoose.Schema({
     color: String,
     carType : String,
     vin: String,
+    isdelete:{
+        type:Boolean,
+        default: false,
+    },
 });
 
 //Nota importante: La primera letra en Mayuscula y en singular para el nombre del modelo 
