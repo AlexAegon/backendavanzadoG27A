@@ -1,7 +1,9 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-//1.- Schema 
-// 2.-Ponerle Nombre 
+/**
+ * 1.- Schema
+ * 2.- Ponerle nombre
+ */
 
 const authorSchema = new mongoose.Schema({
     name: String,
@@ -9,5 +11,4 @@ const authorSchema = new mongoose.Schema({
     mail: String,
 });
 
-export {authorSchema};
-export default mongoose.model('Author',authorSchema);
+export default mongoose.model('Author', authorSchema);
