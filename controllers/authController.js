@@ -40,18 +40,18 @@ const login = async (req, res) => {
         });
     }
     try {
-        //buscamos user 
+        //buscamos user con ese correo 
         const user = await User.findOne({
             email: req.body.email,
         });
 
-
+        // si no hay user usamos 404
         if (!user) {
             return res.status(404).json({
                 msg: 'usrio no encontrado'
             })
         }
-
+        // comparar contraseñas
         const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password)
 
         if (isPasswordCorrect) {
@@ -60,11 +60,11 @@ const login = async (req, res) => {
             const payload = {
                 email: user.email,
                 role: user.role,
-            }
+            };
             const token = jwt.encode(payload, process.env.SECRET);
             // regresar el token 
             return res.json({
-                msg: 'login correcto',
+                msg: 'Login correcto',
                 token,
             });
 
@@ -77,7 +77,7 @@ const login = async (req, res) => {
 
     } catch (error) {
         res.status(500).json({
-            msg: 'error al hacer  ',
+            msg: 'error al hacer Login  ',
             error,
         })
 
